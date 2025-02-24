@@ -1,6 +1,6 @@
-import { useState, useEffect, useRef } from 'react';
+import { Button, Col, Divider, Form, Input, InputNumber, Row, Select } from 'antd';
 import dayjs from 'dayjs';
-import { Form, Input, InputNumber, Button, Select, Divider, Row, Col } from 'antd';
+import { useEffect, useRef, useState } from 'react';
 
 import { PlusOutlined } from '@ant-design/icons';
 
@@ -11,19 +11,20 @@ import AutoCompleteAsync from '@/components/AutoCompleteAsync';
 import ItemRow from '@/modules/ErpPanelModule/ItemRow';
 
 import MoneyInputFormItem from '@/components/MoneyInputFormItem';
+import useLanguage from '@/locale/useLanguage';
 import { selectFinanceSettings } from '@/redux/settings/selectors';
 import { useDate } from '@/settings';
-import useLanguage from '@/locale/useLanguage';
 
+import SelectAsync from '@/components/SelectAsync';
 import calculate from '@/utils/calculate';
 import { useSelector } from 'react-redux';
-import SelectAsync from '@/components/SelectAsync';
 
 export default function InvoiceForm({ subTotal = 0, current = null }) {
   const { last_invoice_number } = useSelector(selectFinanceSettings);
 
   if (last_invoice_number === undefined) {
-    return <></>;
+    // return <></>;
+    return <LoadInvoiceForm subTotal={subTotal} current={current} />;
   }
 
   return <LoadInvoiceForm subTotal={subTotal} current={current} />;

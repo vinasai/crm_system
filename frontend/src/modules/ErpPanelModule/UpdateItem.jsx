@@ -1,22 +1,20 @@
-import { useState, useEffect } from 'react';
-import { Form, Divider } from 'antd';
-import dayjs from 'dayjs';
-import { Button, Tag } from 'antd';
 import { PageHeader } from '@ant-design/pro-layout';
+import { Button, Divider, Form } from 'antd';
+import dayjs from 'dayjs';
+import { useEffect, useState } from 'react';
 
-import { useSelector, useDispatch } from 'react-redux';
 import useLanguage from '@/locale/useLanguage';
 import { erp } from '@/redux/erp/actions';
+import { useDispatch, useSelector } from 'react-redux';
 
+import Loading from '@/components/Loading';
+import { selectUpdatedItem } from '@/redux/erp/selectors';
 import calculate from '@/utils/calculate';
 import { generate as uniqueId } from 'shortid';
-import { selectUpdatedItem } from '@/redux/erp/selectors';
-import Loading from '@/components/Loading';
 
 import { CloseCircleOutlined, PlusOutlined } from '@ant-design/icons';
 import { useNavigate, useParams } from 'react-router-dom';
 
-import { settingsAction } from '@/redux/settings/actions';
 // import { StatusTag } from '@/components/Tag';
 
 function SaveForm({ form, translate }) {

@@ -1,6 +1,7 @@
 const mongoose = require('mongoose');
 
-const Model = mongoose.model('Setting');
+// const Model = mongoose.model('Setting');
+const Setting = require('../../models/coreModels/Setting');
 
 const increaseBySettingKey = async ({ settingKey }) => {
   try {
